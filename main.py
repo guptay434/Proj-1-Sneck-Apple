@@ -5,7 +5,7 @@ from pygame.locals import *
 def drew_block():
     surface.fill((3, 4, 8))
     surface.blit(block, (block_x, block_y))
-    pygame.display.flip()
+    pygame.display.update()
 
 
 if __name__ == "__main__":
@@ -18,29 +18,31 @@ if __name__ == "__main__":
     block_y = 100
     surface.blit(block, (block_x, block_y))
 
-    pygame.display.flip()
-
+    pygame.display.update()
     running = True
+    
     while running:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                pass
+                
+                if event.key == K_ESCAPE:
+                    running = False
+                    
+                if event.key == K_UP:
+                    block_y += 10
+                    drew_block()
 
-            if event.key == K_UP:
-                block_y += 10
-                drew_block()
+                if event.key == K_DOWN:
+                    block_y -= 10
+                    drew_block()
 
-            if event.key == K_DOWN:
-                block_y -= 10
-                drew_block()
+                if event.key == K_LEFT:
+                    block_x -= 10
+                    drew_block()
 
-            if event.key == K_LEFT:
-                block_x -= 10
-                drew_block()
-
-            if event.key == K_RIGHT:
-                block_x += 10
-                drew_block()
+                if event.key == K_RIGHT:
+                    block_x += 10
+                    drew_block()
 
             elif event.type == QUIT:
                 running = False
