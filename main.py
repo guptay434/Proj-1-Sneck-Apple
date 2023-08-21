@@ -29,11 +29,11 @@ if __name__ == "__main__":
                     running = False
                     
                 if event.key == K_UP:
-                    block_y += 10
+                    block_y -= 10
                     drew_block()
 
                 if event.key == K_DOWN:
-                    block_y -= 10
+                    block_y += 10
                     drew_block()
 
                 if event.key == K_LEFT:
